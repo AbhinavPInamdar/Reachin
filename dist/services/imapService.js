@@ -35,8 +35,7 @@ class ImapService extends events_1.EventEmitter {
                     await EmailService_1.EmailService.indexEmail(updatedEmail);
                 }
                 if (categorization.category === 'Interested') {
-                    const notificationMessage = `New interested email from ${email.from}: ${email.subject || 'No Subject'}`;
-                    await simpleNotificationService_1.SimpleNotificationService.sendNotification(notificationMessage);
+                    await simpleNotificationService_1.SimpleNotificationService.sendNotification(email._id.toString());
                 }
                 logger_1.logger.info('New email processed', {
                     accountId,
