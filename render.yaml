@@ -9,6 +9,8 @@ services:
         value: production
       - key: PORT
         value: 10000
+      - key: MONGODB_URI
+        sync: false
     healthCheckPath: /health
     
   - type: web
@@ -19,8 +21,3 @@ services:
     envVars:
       - key: NODE_ENV
         value: production
-    
-databases:
-  - name: mongodb
-    databaseName: reachinbox
-    user: reachinbox_user
