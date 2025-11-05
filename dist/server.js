@@ -20,7 +20,9 @@ const app = (0, express_1.default)();
 const PORT = ConfigService_1.configService.getPort();
 app.use((0, helmet_1.default)());
 app.use((0, cors_1.default)({
-    origin: ['http://localhost:3000', 'http://localhost:3001'],
+    origin: process.env.NODE_ENV === 'production'
+        ? ['https://your-render-frontend.onrender.com', 'https://your-render-app.onrender.com']
+        : ['http://localhost:3000', 'http://localhost:3001'],
     credentials: true
 }));
 app.use(express_1.default.json({ limit: '10mb' }));

@@ -31,7 +31,7 @@ app.use('/api/imap', require('./routes/imapRoutes').default);
 app.use('/api', require('./routes/simpleRoutes').default);
 
 
-app.get('/health', (_req, res) => {
+app.get('/health', (_req: express.Request, res: express.Response) => {
   const health = {
     status: 'OK',
     timestamp: new Date().toISOString(),

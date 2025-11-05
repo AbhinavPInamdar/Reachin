@@ -10,3 +10,4 @@ declare class AccountController {
 }
 export declare const accountController: AccountController;
 export {};
+//# sourceMappingURL=accountController.d.ts.map

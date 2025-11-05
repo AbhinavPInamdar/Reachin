@@ -183,7 +183,7 @@ export class ImapService extends EventEmitter {
     const { imap } = connection;
 
     return new Promise((resolve, reject) => {
-      imap.openBox(folderName, true, async (error, box) => {
+      imap.openBox(folderName, true, async (error: any, box: any) => {
         if (error) {
           logger.error('Failed to open folder:', { accountId, folderName, error });
           reject(error);
@@ -197,7 +197,7 @@ export class ImapService extends EventEmitter {
 
           const searchCriteria = ['ALL', ['SINCE', thirtyDaysAgo]];
           
-          imap.search(searchCriteria, async (searchError, uids) => {
+          imap.search(searchCriteria, async (searchError: any, uids: any) => {
             if (searchError) {
               logger.error('IMAP search failed:', { accountId, folderName, searchError });
               reject(searchError);
@@ -245,17 +245,17 @@ export class ImapService extends EventEmitter {
 
       const emails: any[] = [];
 
-      fetch.on('message', (msg, seqno) => {
+      fetch.on('message', (msg: any, seqno: any) => {
         let buffer = '';
         let attributes: any = null;
 
-        msg.on('body', (stream) => {
-          stream.on('data', (chunk) => {
+        msg.on('body', (stream: any) => {
+          stream.on('data', (chunk: any) => {
             buffer += chunk.toString('utf8');
           });
         });
 
-        msg.once('attributes', (attrs) => {
+        msg.once('attributes', (attrs: any) => {
           attributes = attrs;
         });
 
@@ -295,7 +295,7 @@ export class ImapService extends EventEmitter {
         });
       });
 
-      fetch.once('error', (fetchError) => {
+      fetch.once('error', (fetchError: any) => {
         logger.error('IMAP fetch error:', { accountId, folderName, fetchError });
         reject(fetchError);
       });
@@ -373,7 +373,7 @@ export class ImapService extends EventEmitter {
 
     try {
       // Open INBOX for IDLE monitoring
-      imap.openBox('INBOX', false, (error, box) => {
+      imap.openBox('INBOX', false, (error: any, box: any) => {
         if (error) {
           logger.error('Failed to open INBOX for IDLE:', { accountId, error });
           return;
