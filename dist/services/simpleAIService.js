@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SimpleAIService = void 0;
 const Email_1 = require("../models/Email");
+const simpleNotificationService_1 = require("./simpleNotificationService");
 class SimpleAIService {
     static async categorizeEmail(emailId) {
         try {
@@ -17,6 +18,15 @@ class SimpleAIService {
             email.category = category;
             email.categoryConfidence = confidence;
             await email.save();
+            if (category === Email_1.EmailCategory.INTERESTED) {
+                try {
+                    await simpleNotificationService_1.SimpleNotificationService.sendNotification(emailId);
+                    console.log('Notification sent for interested email:', emailId);
+                }
+                catch (notificationError) {
+                    console.error('Failed to send notification:', notificationError);
+                }
+            }
             return { category, confidence };
         }
         catch (error) {

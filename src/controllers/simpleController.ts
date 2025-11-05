@@ -55,11 +55,6 @@ export class SimpleController {
     }
     
     const result = await SimpleAIService.categorizeEmail(id);
-    
-
-    if (result.category === 'Interested') {
-      await SimpleNotificationService.sendNotification(id);
-    }
 
     return res.json({
       success: true,

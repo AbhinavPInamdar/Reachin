@@ -1,1 +1,1 @@
-{"version":3,"file":"simpleNotificationService.d.ts","sourceRoot":"","sources":["../../src/services/simpleNotificationService.ts"],"names":[],"mappings":"AAGA,qBAAa,yBAAyB;WAEvB,gBAAgB,CAAC,OAAO,EAAE,MAAM;;;;mBAuBxB,WAAW;WAoBnB,gBAAgB;;;;;;;;;CAmB9B"}
+{"version":3,"file":"simpleNotificationService.d.ts","sourceRoot":"","sources":["../../src/services/simpleNotificationService.ts"],"names":[],"mappings":"AAGA,qBAAa,yBAAyB;WAEvB,gBAAgB,CAAC,OAAO,EAAE,MAAM;;;;mBA8BxB,WAAW;mBAoBX,qBAAqB;WAyD7B,gBAAgB;;;;;;;;;;;CAqE9B"}

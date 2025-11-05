@@ -1,5 +1,6 @@
 
 import { Email, EmailCategory } from '../models/Email';
+import { SimpleNotificationService } from './simpleNotificationService';
 
 export class SimpleAIService {
   
@@ -21,6 +22,15 @@ export class SimpleAIService {
       email.category = category;
       email.categoryConfidence = confidence;
       await email.save();
+
+      if (category === EmailCategory.INTERESTED) {
+        try {
+          await SimpleNotificationService.sendNotification(emailId);
+          console.log('Notification sent for interested email:', emailId);
+        } catch (notificationError) {
+          console.error('Failed to send notification:', notificationError);
+        }
+      }
 
       return { category, confidence };
     } catch (error) {

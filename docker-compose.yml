@@ -43,28 +43,11 @@ services:
       - app-network
     restart: always
 
-  redis:
-    image: redis:7.2-alpine
-    container_name: redis_container
-    command: >
-      sh -c "redis-server --appendonly yes --requirepass ${REDIS_PASSWORD:-changeme}"
-    ports:
-      - "6379:6379"
-    volumes:
-      - redis_data:/data
-    healthcheck:
-      test: ["CMD-SHELL", "redis-cli -a ${REDIS_PASSWORD:-changeme} ping | grep -q PONG || exit 1"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-    networks:
-      - app-network
-    restart: always
+
 
 volumes:
   mongodb_data:
   esdata01:
-  redis_data:
 
 networks:
   app-network:

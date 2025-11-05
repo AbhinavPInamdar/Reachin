@@ -45,9 +45,6 @@ SimpleController.categorizeEmail = (0, errorHandler_1.asyncHandler)(async (req, 
         return res.status(400).json({ error: 'Invalid email ID format' });
     }
     const result = await simpleAIService_1.SimpleAIService.categorizeEmail(id);
-    if (result.category === 'Interested') {
-        await simpleNotificationService_1.SimpleNotificationService.sendNotification(id);
-    }
     return res.json({
         success: true,
         data: result

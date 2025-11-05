@@ -6,8 +6,9 @@ class ElasticsearchClient {
   private connected: boolean = false;
 
   constructor() {
+    // Always use local Elasticsearch as per assignment requirements
     this.client = new Client({
-      node: process.env.ELASTICSEARCH_URL || 'http://localhost:9200',
+      node: 'http://localhost:9200',
       requestTimeout: 30000,
       pingTimeout: 3000,
     });
@@ -22,8 +23,10 @@ class ElasticsearchClient {
       // Create email index if it doesn't exist
       await this.createEmailIndex();
     } catch (error) {
-      logger.error('Failed to connect to Elasticsearch:', error);
-      throw error;
+      logger.error('Failed to connect to local Elasticsearch. Make sure Elasticsearch is running on localhost:9200', error);
+      logger.info('💡 Run "docker-compose up elasticsearch" to start Elasticsearch locally');
+      this.connected = false;
+      // Don't throw error - allow app to continue for development
     }
   }
 
@@ -102,7 +105,8 @@ class ElasticsearchClient {
 
   async indexEmail(email: any): Promise<void> {
     if (!this.connected) {
-      throw new Error('Elasticsearch not connected');
+      logger.debug('Elasticsearch not connected, skipping email indexing');
+      return;
     }
 
     try {
@@ -141,7 +145,8 @@ class ElasticsearchClient {
 
   async searchEmails(query: string, filters: any = {}): Promise<any[]> {
     if (!this.connected) {
-      throw new Error('Elasticsearch not connected');
+      logger.warn('Elasticsearch not connected, returning empty search results');
+      return [];
     }
 
     try {
@@ -222,7 +227,8 @@ class ElasticsearchClient {
 
   async deleteEmail(emailId: string): Promise<void> {
     if (!this.connected) {
-      throw new Error('Elasticsearch not connected');
+      logger.debug('Elasticsearch not connected, skipping email deletion from index');
+      return;
     }
 
     try {
@@ -242,7 +248,13 @@ class ElasticsearchClient {
 
   async getStats(): Promise<any> {
     if (!this.connected) {
-      throw new Error('Elasticsearch not connected');
+      logger.warn('Elasticsearch not connected, returning empty stats');
+      return {
+        totalEmails: 0,
+        categories: [],
+        accounts: [],
+        folders: []
+      };
     }
 
     try {

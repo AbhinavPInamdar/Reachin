@@ -17,8 +17,7 @@ A simple, clean email aggregator built for the ReachInbox assignment. This versi
 - Node.js + TypeScript
 - Express.js REST API
 - MongoDB (email storage)
-- Elasticsearch (search engine)
-- Redis (caching)
+- Elasticsearch (local search engine)
 - Real IMAP connections with IDLE mode
 
 **Frontend:**
@@ -54,9 +53,9 @@ frontend/
 
 ### 1. Start Infrastructure
 ```bash
-docker compose up -d
+docker-compose up -d
 ```
-This starts MongoDB, Redis, and Elasticsearch.
+This starts MongoDB and Elasticsearch locally (as required by assignment).
 
 ### 2. Configure Environment
 ```bash
@@ -144,13 +143,18 @@ Simple rule-based categorization:
 ## Environment Variables
 
 ```bash
-# Database
+# Database (Local Development)
 MONGODB_URI=mongodb://root:password@localhost:27017/appdb?authSource=admin
-REDIS_URL=redis://localhost:6379
-REDIS_PASSWORD=changeme
 
 # Notifications
 WEBHOOK_SITE_URL=https://webhook.site/your-unique-url
+
+# IMAP Configuration
+GMAIL_USERNAME=your-email@gmail.com
+GMAIL_PASSWORD=your-app-password
+
+# AI Configuration
+OPENAI_API_KEY=your-openai-api-key
 
 # Server
 PORT=8080
