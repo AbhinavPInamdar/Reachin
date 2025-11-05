@@ -1,0 +1,1 @@
+{"version":3,"file":"mockImapService.d.ts","sourceRoot":"","sources":["../../src/services/mockImapService.ts"],"names":[],"mappings":"AAMA,qBAAa,eAAe;WAKb,kBAAkB,CAAC,SAAS,EAAE,MAAM,EAAE,KAAK,GAAE,MAAW,GAAG,OAAO,CAAC,IAAI,CAAC;IAiDrF,OAAO,CAAC,MAAM,CAAC,eAAe;IAc9B,OAAO,CAAC,MAAM,CAAC,gBAAgB;IAgB/B,OAAO,CAAC,MAAM,CAAC,aAAa;IAgB5B,OAAO,CAAC,MAAM,CAAC,iBAAiB;CAuBjC"}
