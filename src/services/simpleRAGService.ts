@@ -12,7 +12,7 @@ export class SimpleRAGService {
     {
       id: 'job_application',
       type: 'outreach',
-      content: 'I am applying for software engineering positions. If the lead is interested, share the meeting booking link: https://cal.com/johndoe'
+      content: 'I am applying for software engineering positions. If the lead is interested, share the meeting booking link: https://cal.com/reachedin-72ywvk'
     },
     {
       id: 'product_info',
@@ -22,7 +22,7 @@ export class SimpleRAGService {
     {
       id: 'meeting_template',
       type: 'response_template',
-      content: 'Thank you for your interest! I would be happy to discuss this opportunity further. You can book a meeting with me here: https://cal.com/johndoe'
+      content: 'Thank you for your interest! I would be happy to discuss this opportunity further. You can book a meeting with me here: https://cal.com/reachedin-72ywvk'
     },
     {
       id: 'interested_template',
@@ -110,7 +110,7 @@ export class SimpleRAGService {
 
     if (emailText.includes('interview') || emailText.includes('meeting')) {
       suggestions.push({
-        text: 'Thank you for your interest! I am available for an interview. You can book a convenient time slot here: https://cal.com/johndoe',
+        text: 'Thank you for your interest! I am available for an interview. You can book a convenient time slot here: https://cal.com/reachedin-72ywvk',
         tone: 'professional',
         confidence: 0.9
       });
