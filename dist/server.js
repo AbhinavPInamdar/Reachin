@@ -8,7 +8,6 @@ const cors_1 = __importDefault(require("cors"));
 const helmet_1 = __importDefault(require("helmet"));
 const dotenv_1 = __importDefault(require("dotenv"));
 const database_1 = require("./config/database");
-const redis_1 = require("./config/redis");
 const elasticsearch_1 = require("./config/elasticsearch");
 const imapService_1 = require("./services/imapService");
 const logger_1 = require("./utils/logger");
@@ -46,7 +45,6 @@ app.use(errorHandler_1.errorHandler);
 async function startServer() {
     try {
         await (0, database_1.connectDatabase)();
-        await (0, redis_1.connectRedis)();
         try {
             await elasticsearch_1.elasticsearchClient.connect();
             logger_1.logger.info('Elasticsearch connected successfully');

@@ -3,7 +3,7 @@ import cors from 'cors';
 import helmet from 'helmet';
 import dotenv from 'dotenv';
 import { connectDatabase } from './config/database';
-import { connectRedis } from './config/redis';
+
 import { elasticsearchClient } from './config/elasticsearch';
 import { imapService } from './services/imapService';
 import { logger } from './utils/logger';
@@ -51,7 +51,6 @@ async function startServer() {
   try {
     // Connect to databases
     await connectDatabase();
-    await connectRedis();
     
     // Connect to Elasticsearch
     try {

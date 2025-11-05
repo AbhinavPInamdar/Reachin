@@ -3,8 +3,6 @@ export interface AppConfig {
     nodeEnv: string;
     mongodbUri: string;
     elasticsearchUrl: string;
-    redisUrl: string;
-    redisPassword: string;
     gmailUsername: string;
     gmailPassword: string;
     outlookUsername: string;
@@ -25,10 +23,6 @@ declare class ConfigService {
     getPort(): number;
     getMongoUri(): string;
     getElasticsearchUrl(): string;
-    getRedisConfig(): {
-        url: string;
-        password: string;
-    };
     getOpenAIKey(): string;
     getNotificationConfig(): {
         slack: string;

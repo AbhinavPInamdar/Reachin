@@ -18,8 +18,6 @@ class ConfigService {
             nodeEnv: process.env.NODE_ENV || 'development',
             mongodbUri: process.env.MONGODB_URI || 'mongodb://root:password@localhost:27017/appdb?authSource=admin',
             elasticsearchUrl: process.env.ELASTICSEARCH_URL || 'http://localhost:9200',
-            redisUrl: process.env.REDIS_URL || 'redis://localhost:6379',
-            redisPassword: process.env.REDIS_PASSWORD || 'changeme',
             gmailUsername: process.env.GMAIL_USERNAME || '',
             gmailPassword: process.env.GMAIL_PASSWORD || '',
             outlookUsername: process.env.OUTLOOK_USERNAME || '',
@@ -53,12 +51,6 @@ class ConfigService {
     }
     getElasticsearchUrl() {
         return this.config.elasticsearchUrl;
-    }
-    getRedisConfig() {
-        return {
-            url: this.config.redisUrl,
-            password: this.config.redisPassword
-        };
     }
     getOpenAIKey() {
         return this.config.openaiApiKey;
