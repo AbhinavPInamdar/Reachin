@@ -13,6 +13,9 @@ logs/
 # Build output
 dist/
 
+# Render
+.render/
+
 # IDE
 .vscode/
 .idea/
