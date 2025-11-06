@@ -12,12 +12,3 @@ services:
       - key: MONGODB_URI
         sync: false
     healthCheckPath: /health
-    
-  - type: web
-    name: reachinbox-frontend
-    env: node
-    buildCommand: cd frontend && npm install && npm run build
-    startCommand: cd frontend && npm start
-    envVars:
-      - key: NODE_ENV
-        value: production

@@ -25,9 +25,11 @@ interface Account {
   enabled: boolean;
 }
 
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080';
+
 const api = {
   async getEmails(accountId?: string, folder?: string, category?: string) {
-    let url = 'http://localhost:8080/api/emails?limit=20';
+    let url = `${API_BASE_URL}/api/emails?limit=20`;
     if (accountId) url += `&accountId=${accountId}`;
     if (folder) url += `&folder=${folder}`;
     if (category) url += `&category=${category}`;
@@ -38,13 +40,13 @@ const api = {
   },
 
   async getAccounts() {
-    const response = await fetch('http://localhost:8080/api/accounts');
+    const response = await fetch(`${API_BASE_URL}/api/accounts`);
     const data = await response.json();
     return data.data;
   },
 
   async searchEmails(searchText: string) {
-    const response = await fetch('http://localhost:8080/api/emails/search', {
+    const response = await fetch(`${API_BASE_URL}/api/emails/search`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ text: searchText })
@@ -54,32 +56,32 @@ const api = {
   },
 
   async categorizeEmail(emailId: string) {
-    const response = await fetch(`http://localhost:8080/api/emails/${emailId}/categorize`, {
+    const response = await fetch(`${API_BASE_URL}/api/emails/${emailId}/categorize`, {
       method: 'POST'
     });
     return response.json();
   },
 
   async getStats() {
-    const response = await fetch('http://localhost:8080/api/stats');
+    const response = await fetch(`${API_BASE_URL}/api/stats`);
     const data = await response.json();
     return data.data;
   },
 
   async getReplySuggestions(emailId: string) {
-    const response = await fetch(`http://localhost:8080/api/emails/${emailId}/reply-suggestions`);
+    const response = await fetch(`${API_BASE_URL}/api/emails/${emailId}/reply-suggestions`);
     const data = await response.json();
     return data.data;
   },
 
   async syncAllAccounts() {
-    const response = await fetch('http://localhost:8080/api/imap/status');
+    const response = await fetch(`${API_BASE_URL}/api/imap/status`);
     const statusData = await response.json();
     
     if (statusData.success && statusData.data) {
       const accountIds = Object.keys(statusData.data);
       const syncPromises = accountIds.map(accountId => 
-        fetch(`http://localhost:8080/api/imap/sync/${accountId}`, { method: 'POST' })
+        fetch(`${API_BASE_URL}/api/imap/sync/${accountId}`, { method: 'POST' })
       );
       
       await Promise.all(syncPromises);
