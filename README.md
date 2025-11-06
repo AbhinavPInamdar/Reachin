@@ -2,7 +2,7 @@
 
 A simple, clean email aggregator built for the ReachInbox assignment. This version uses straightforward, intern-level code that's easy to understand and maintain.
 
-## Features Implemented (6/6) - 100% COMPLETE!
+## Features Implemented (6/6)
 
 - **1. Real-Time Email Synchronization** - Real IMAP connections with IDLE mode  
 - **2. Searchable Storage using Elasticsearch** - Full Elasticsearch integration with Docker  
@@ -88,6 +88,10 @@ npm run dev
 - **Health Check**: http://localhost:8080/health
 - **Elasticsearch**: http://localhost:9200
 
+## Live Demo
+- **Frontend**: https://reachin.vercel.app/
+- **Backend API**: https://reachin-jjs8.onrender.com
+
 ## API Endpoints
 
 ### Emails
@@ -123,21 +127,7 @@ curl -X POST http://localhost:8080/api/emails/search \
 curl http://localhost:8080/api/stats
 ```
 
-## AI Categorization
 
-Simple rule-based categorization:
-- **Interested**: Contains "interested", "next steps", "proceed"
-- **Meeting Booked**: Contains "interview", "meeting", "schedule"
-- **Not Interested**: Contains "rejected", "not selected", "unfortunately"
-- **Spam**: Contains "unsubscribe", "newsletter", "promotion"
-- **Out of Office**: Contains "out of office", "vacation", "away"
-
-## Frontend Features
-
-- **Email List**: View all emails with categories
-- **Search**: Real-time email search
-- **Filters**: Filter by account, folder, category
-- **Statistics**: Dashboard with email metrics
 - **Categorization**: One-click AI categorization
 
 ## Environment Variables
