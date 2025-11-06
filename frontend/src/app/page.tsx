@@ -25,7 +25,7 @@ interface Account {
   enabled: boolean;
 }
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080';
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'https://reachin-jjs8.onrender.com';
 
 const api = {
   async getEmails(accountId?: string, folder?: string, category?: string) {

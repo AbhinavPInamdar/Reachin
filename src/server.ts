@@ -19,7 +19,7 @@ const PORT = configService.getPort();
 app.use(helmet());
 app.use(cors({
   origin: process.env.NODE_ENV === 'production' 
-    ? ['https://reachinbox-frontend.vercel.app', 'https://reachinbox-frontend-*.vercel.app'] 
+    ? ['https://reachin.vercel.app', 'https://reachin-*.vercel.app'] 
     : ['http://localhost:3000', 'http://localhost:3001'],
   credentials: true
 }));
