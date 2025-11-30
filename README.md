@@ -1,6 +1,6 @@
 # ReachInbox Email Aggregator
 
-A simple, clean email aggregator built for the ReachInbox assignment. This version uses straightforward, intern-level code that's easy to understand and maintain.
+A simple, clean email aggregator built for the ReachInbox assignment.
 
 ## Features Implemented (6/6)
 
